@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>后台登录</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" type="image/png" href="__ADMIN__/images/fav.png">
+    <!-- //for-mobile-apps -->
+    <link href="__ADMIN__/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+<!-- main -->
+<div class="main">
+    <h1>
+        后台登录系统
+    </h1>
+    <form>
+        <input type="text" value=""  id="user">
+        <input type="password" value=""  id="pwd">
+        <input type="button" id="login" data-href="{:url('@v1/login/checklogin')}"  value="登录">
+    </form>
+</div>
+<div class="footer"></div>
+<!-- //main -->
+{include file='public/js' /}
+</body>
+</html>

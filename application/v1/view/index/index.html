@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{$title}</title>
+	{include file='public/css' /}
+</head>
+
+<body>
+	<!-- Pre Loader -->
+	<div class="loading">
+		<div class="spinner">
+			<div class="double-bounce1"></div>
+			<div class="double-bounce2"></div>
+		</div>
+	</div>
+	<!--/Pre Loader -->
+	<div class="wrapper">
+
+		{include file='public/left' /}
+
+		<!-- Page Content -->
+		<div id="content">
+			{include file="public/nav" /}
+
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="index.html">
+						<span class="ti-home"></span>
+					</a>
+				</li>
+				<li class="breadcrumb-item active">Dashboard</li>
+			</ol>
+
+			<div class="container-fluid home">
+				<div class="row">
+					<!-- Widget Item -->
+					<div class="col-md-3">
+						<div class="widget-area lorvens-box-shadow color-red">
+							<div class="widget-left">
+								<span class="ti-money"></span>
+							</div>
+							<div class="widget-right">
+								<h4 class="wiget-title">Open Payments</h4>
+								<span class="numeric color-red">$8348</span>
+							</div>
+						</div>
+					</div>
+					<!-- /Widget Item -->
+					<!-- Widget Item -->
+					<div class="col-md-3">
+						<div class="widget-area lorvens-box-shadow color-blue">
+							<div class="widget-left">
+								<span class="ti-user"></span>
+							</div>
+							<div class="widget-right">
+								<h4 class="wiget-title">New Users</h4>
+								<span class="numeric color-blue">258</span>
+							</div>
+						</div>
+					</div>
+					<!-- /Widget Item -->
+					<!-- Widget Item -->
+					<div class="col-md-3">
+						<div class="widget-area lorvens-box-shadow color-green">
+							<div class="widget-left">
+								<span class="ti-bar-chart"></span>
+							</div>
+							<div class="widget-right">
+								<h4 class="wiget-title">Avg Revenue</h4>
+								<span class="numeric color-green">$6585</span>
+							</div>
+						</div>
+					</div>
+					<!-- /Widget Item -->
+					<!-- Widget Item -->
+					<div class="col-md-3">
+						<div class="widget-area lorvens-box-shadow color-yellow">
+							<div class="widget-left">
+								<span class="ti-thumb-up"></span>
+							</div>
+							<div class="widget-right">
+								<h4 class="wiget-title">Total Projects</h4>
+								<span class="numeric color-yellow">73</span>
+							</div>
+						</div>
+					</div>
+					<!-- /Widget Item -->
+				</div>
+
+				<div class="row">
+					
+					<!-- Widget Item -->
+					<div class="col-sm-12">
+							<div class="widget-area-2 lorvens-box-shadow">
+								<h3 class="widget-title">Maps</h3>
+								<div id="world-map-maker" class="big-world-mill"></div>
+							</div>
+						</div>
+						<!-- /Widget Item -->
+				</div>		
+			</div>
+		</div>
+		<!-- /Page Content -->
+	</div>
+	<!-- Back to Top -->
+	<a id="back-to-top" href="#" class="back-to-top">
+          <span class="ti-angle-up"></span>
+	</a>
+
+  {include file='public/js' /}
+</body>
+
+</html>
