@@ -3,6 +3,7 @@
 namespace app\v1\controller;
 
 use app\v1\controller\AdminBase;
+use app\v1\model\User;
 use think\session;
 class Login extends  AdminBase
 {
@@ -16,10 +17,24 @@ class Login extends  AdminBase
     //检查登录
     public function checklogin(){
         if($this->post){
-            $user = input('post.user','','trim');
+            $users = input('post.user','','trim');
             $pwd  = input('post.pwd','','trim');
 
-            //todo 暂停 后续
+            $user = new User();
+            $result = $user->_checkUserInfo($users,$pwd); //todo 待完成
+
+            if($result == 40003){
+
+            }
+
+            if($result == 40000){
+
+            }
+
+            if($result == 40004){
+
+            }
+
         }
         return false;
     }

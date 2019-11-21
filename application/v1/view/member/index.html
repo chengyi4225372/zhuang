@@ -37,7 +37,7 @@
 
 
 				<div class="col-md-12">
-					<button type="button" class="btn btn btn-outline-primary">添加用户</button>
+					<button type="button"  data-url="{:url('member/add')}"  class="btn btn btn-outline-primary add">添加用户</button>
 				</div>
 
 
@@ -59,21 +59,34 @@
 													<th scope="col">操作</th>
 												</tr>
 											</thead>
+											{volist name='list' id='vo'}
 											<tbody>
 												<tr>
-													<th scope="row">1</th>
-													<td>15" Mackbook Pro Retina Display Model 2017</td>
-													<td>$ 1999</td>
-													<td>1</td>
-													<td>$ 1999</td>
+													<th scope="row">{$vo.id}</th>
+													<td>{$vo.users}</td>
 													<td>
-                                                        <button type="button" class="btn btn-outline-success">编辑</button>
+												     {if condition="$vo.status eq -1" /}
+														<button type="button" onclick="changeStatus('{$vo.id}','{$vo.status}')" class="btn btn-outline-warning">禁止</button>
+													{else /}
+														<button type="button" onclick="changeStatus('{$vo.id}','{$vo.status}')" class="btn btn-outline-info">正常</button>
+                                                     {/if}
+													</td>
+													<td>{$vo.ip}</td>
+													<td>{$vo.create_time}</td>
+													<td>
+                                                        <button type="button" data-href="{:url('@v1/member/edit')}?mid={$vo.id}" class="btn btn-outline-success edits">编辑</button>
                                                          &nbsp;&nbsp;
-                                                        <button type="button" class="btn btn-outline-danger">删除</button>
+                                                        <button type="button" data-href="{:url('@v1/member/del')}?mid={$vo.id}" class="btn btn-outline-danger dels">删除</button>
                                                     </td>
 												</tr>
 											</tbody>
+											{/volist}
 										</table>
+                                     <!-- 分页       -->
+										<div class="lorvens-widget">
+											 {$list->render();}
+										</div>
+
 									</div>
 
 								</div>
@@ -92,5 +105,87 @@
 	</a>
    {include file='public/js' /}
 </body>
+<script>
+	$('.add').click(function(){
+
+	var url  = $(this).attr('data-url');
+
+		layer.open({
+			type: 2,
+			title: '添加',
+			shadeClose: true,
+			shade: 0.8,
+			area: ['50%', '70%'],
+			content: url, //iframe的url
+		})
+	});
+
+	$('.edits').click(function(){
+		var urls  = $(this).attr('data-href');
+
+		console.log(urls);
+
+		layer.open({
+			type: 2,
+			title: '编辑',
+			shadeClose: true,
+			shade: 0.8,
+			area: ['50%', '70%'],
+			content: urls, //iframe的url
+		});
+	});
+
+	$('.dels').click(function(){
+		var hrefs = $(this).attr('data-href');
+
+		layer.confirm('您确定要删除？', {
+			btn: ['确定','点错了'] //按钮
+		}, function(){
+
+			$.get(hrefs,function(ret){
+
+				if(ret.code == 200){
+					layer.msg(ret.msg,{icon:6},function(){
+						parent.location.reload();
+					})
+				}
+
+				if(ret.code == 400){
+					layer.msg(ret.msg,{icon:6},function(){
+						parent.location.reload();
+					})
+				}
+			})
+
+		}, function(){
+			parent.layer.closeAll();
+		});
+	});
+
+	function changeStatus(id,status){
+		var change = "{:url('member/changes')}";
+
+		$.post(change,{'id':id,'status':status},function(ret){
+			  if(ret.code == 200){
+			     layer.msg(ret.msg,{icon:6},function(){
+			     	parent.location.reload();
+				 })
+			   }
+
+			  if(ret.code == 404){
+				  layer.msg(ret.msg,{icon:5},function(){
+					  parent.location.reload();
+				  })
+			   }
+
+			if(ret.code == 403){
+				layer.msg(ret.msg,{icon:4},function(){
+					parent.location.reload();
+				})
+			}
+		},'json')
+	}
+</script>
+
 
 </html>
