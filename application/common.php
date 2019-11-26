@@ -61,7 +61,6 @@ function setpwd($pwd,$salt){
     return $pwd;
 }
 
-
 /**
  * 获取ip
  */
@@ -83,6 +82,15 @@ function getIp()
         $ip = $_SERVER['HTTP_X_REAL_IP'];
     }
     return $ip;
+}
+
+/**
+ * 检查id 是否为空
+ */
+function checkEmptyId($id){
+    if(empty($id)|| is_null($id)|| !isset($id)|| id<=0){
+        return false;
+    }
 }
 
 

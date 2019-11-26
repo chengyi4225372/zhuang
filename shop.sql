@@ -10,10 +10,29 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-11-21 18:32:51
+Date: 2019-11-26 17:39:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for shop_goods
+-- ----------------------------
+DROP TABLE IF EXISTS `shop_goods`;
+CREATE TABLE `shop_goods` (
+  `id` int(10) DEFAULT NULL,
+  `title` varchar(200) DEFAULT NULL,
+  `imgs` varchar(200) DEFAULT NULL,
+  `status` tinyint(3) DEFAULT NULL,
+  `info` text,
+  `create_time` int(11) unsigned DEFAULT NULL,
+  `del_time` int(11) unsigned DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of shop_goods
+-- ----------------------------
+INSERT INTO `shop_goods` VALUES (null, '用户列表', '/uploads/imgs/goods/0ce8f584-7b78-45eb-9765-39fa6918115d.jpg', '1', 'ffffffffff', '1574761033', null);
 
 -- ----------------------------
 -- Table structure for shop_user
