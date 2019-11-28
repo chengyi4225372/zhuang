@@ -21,7 +21,7 @@ $('#add_good').click(function(){
    var imgs  = $('#Images').val();
    var title = $.trim($('#title').val());
    var status= $('#status option:selected').val();
-   var info  = $.trim($('#info').val());
+   var info  = $('#info').val();
 
    var urls   = $(this).attr('data-url');
 
@@ -58,12 +58,64 @@ $('#add_good').click(function(){
 });
 
 
+/**
+ * 编辑弹窗
+ */
+$('.goodedits').click(function(){
+    var urls = $(this).attr('data-url');
+    layer.open({
+        type: 2,
+        title: '编辑',
+        shadeClose: true,
+        shade: 0.8,
+        area: ['50%', '70%'],
+        content: urls, //iframe的url
+    });
+});
 
 
+/**
+ * 编辑逻辑
+ */
+$('#edit_good').click(function(){
+    var imgs  = $('#Images').val();
+    var title = $.trim($('#title').val());
+    var status= $('#status option:selected').val();
+    var info  = $('#info').val();
+    var id    = $('#mid').val();
 
+    var urls   = $(this).attr('data-url');
 
+    if(imgs ==''|| imgs== undefined ){
+        layer.msg('请上传商品图片');
+        return false;
+    }
 
+    if(info == '' || info == undefined){
+        layer.msg('请输入商品信息');
+        return false;
+    }
 
+    if(title == '' || title == undefined){
+        layer.msg('请输入商品名称');
+        return false;
+    }
+
+    $.post(urls,{'title':title,'status':status,'imgs':imgs,'info':info,'id':id},function(ret){
+        if(ret.code == 200){
+            layer.msg(ret.msg,{icon:6},function(){
+                parent.location.reload();
+            })
+        }
+
+        if(ret.code == 400){
+            layer.msg(ret.msg,{icon:5},function(){
+                parent.location.reload();
+            })
+        }
+
+    },'json')
+})
 
 
 
@@ -74,6 +126,36 @@ $('.cancle').click(function(){
     parent.layer.closeAll();
 })
 
+
+/**
+ * 删除
+ */
+$('.gooddels').click(function(){
+    var hrefs = $(this).attr('data-url');
+
+    layer.confirm('您确定要删除？', {
+        btn: ['确定','点错了'] //按钮
+    }, function(){
+
+        $.get(hrefs,function(ret){
+
+            if(ret.code == 200){
+                layer.msg(ret.msg,{icon:6},function(){
+                    parent.location.reload();
+                })
+            }
+
+            if(ret.code == 400){
+                layer.msg(ret.msg,{icon:6},function(){
+                    parent.location.reload();
+                })
+            }
+        })
+
+    }, function(){
+        parent.layer.closeAll();
+    });
+});
 
 /***
  * 上传图片

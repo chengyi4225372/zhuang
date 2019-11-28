@@ -36,9 +36,9 @@ class Goods extends AdminBase
         if($this->post){
            $data['title']   = input('post.title','','trim');
            $data['status']  = input('post.status','','int');
-           $data['info']    = input('post.info','','trim');
+           $data['infos']    = input('post.info','','trim');
            $data['imgs']    = input('post.imgs','','trim');
-
+            
            $ret = $this->goods->_add($data);
 
            if($ret){
@@ -66,9 +66,9 @@ class Goods extends AdminBase
          if($this->post){
            $data['title']   = input('post.title','','trim');
            $data['status']  = input('post.status','','int');
-           $data['info']    = input('post.info','','int');
+           $data['infos']   = input('post.info','','int');
            $data['imgs']    = input('post.imgs','','trim');
-           $id              = input('post.id','','int');
+           $id               = input('post.id','','int');
 
            $ret = $this->goods->_edit($data,$id);
 

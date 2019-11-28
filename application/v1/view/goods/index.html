@@ -53,27 +53,35 @@
 											<thead>
 												<tr>
 													<th scope="col">ID</th>
-													<th scope="col">用户名</th>
-													<th scope="col">用户状态</th>
-													<th scope="col">ip</th>
+													<th scope="col">商品名称</th>
+													<th scope="col">商品图</th>
+													<th scope="col">商品状态</th>
 													<th scope="col">创建时间</th>
 													<th scope="col">操作</th>
 												</tr>
 											</thead>
+											{volist name='list' id='vo'}
 											<tbody>
 												<tr>
-													<th scope="row">1</th>
-													<td>15" Mackbook Pro Retina Display Model 2017</td>
-													<td>$ 1999</td>
-													<td>1</td>
-													<td>$ 1999</td>
+													<th scope="row">{$vo.id}</th>
+													<td>{$vo.title}</td>
 													<td>
-                                                        <button type="button" class="btn btn-outline-success">编辑</button>
+														<a href="{$vo.imgs}">
+															<img src="{$vo.imgs}" style="width:120px;height:80px;" />
+														</a>
+													</td>
+													<td>
+
+													</td>
+													<td>{$vo.create_time}</td>
+													<td>
+                                                        <button type="button" data-url="{:url('@v1/goods/edit')}?id={$vo.id}" class="btn btn-outline-success goodedits">编辑</button>
                                                          &nbsp;&nbsp;
-                                                        <button type="button" class="btn btn-outline-danger">删除</button>
+                                                        <button type="button" data-url="{:url('@v1/goods/dels')}?id={$vo.id}" class="btn btn-outline-danger gooddels">删除</button>
                                                     </td>
 												</tr>
 											</tbody>
+											{/volist}
 										</table>
 									</div>
 

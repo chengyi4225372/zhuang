@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {include file="public/css" /}
+</head>
+<body>
+
+<div id="content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget-area-2 lorvens-box-shadow">
+
+                    <div class="lorvens-widget">
+                        <form>
+
+                            <div class="form-group">
+                                <label for="images">商品图</label>
+                                <br/>
+                                <img id="Imgs" src="{$info.imgs}"  onclick="$('#file').click();" style="width: 150px;height: 100px;">
+                                <input type="file" onchange="upload_files()" class="form-control" id="file" style="display:none;" >
+                                <input type="hidden" id="Images" value="{$info.imgs}" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="title">商品名称</label>
+                                <input type="text" class="form-control" id="title" value="{$info.title}" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="names">商品详情</label>
+                                <textarea class="form-control" id="info" rows="6">{$info.infos}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status">商品状态</label>
+                                <select class="form-control m-bottom10" id="status">
+                                    <option value="1" {eq name="$info.status" value="1"} selected="" {/eq}>上架</option>
+                                    <option value="-1" {eq name="$info.status" value="1"} selected="" {/eq}>下架</option>
+                                </select>
+                            </div>
+
+                            <input type="hidden" id="mid" value="{$info.id}" />
+
+                            <button type="button" id="edit_good" data-url="{:url('goods/edit')}" class="btn btn-outline-success " style="margin-left: 200px;">提交</button>
+
+                            <button type="button" class="btn btn-primary cancle" >取消</button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /Main Content -->
+</div>
+
+{include file='public/js' /}
+</body>
+</html>
