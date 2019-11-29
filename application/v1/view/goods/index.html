@@ -42,7 +42,7 @@
 
 
 
-				<div class="row">
+              <div class="row">
 						<div class="col-md-12">
 							<div class="widget-area-2 lorvens-box-shadow pb-3">
 
@@ -71,6 +71,11 @@
 														</a>
 													</td>
 													<td>
+													{eq name='vo.status' value='1'}
+											        <button type="button" class="btn btn-outline-info">上架</button>
+												     {else /}
+												    <button type="button" class="btn btn-outline-dark">下架</button>
+													{/eq}
 
 													</td>
 													<td>{$vo.create_time}</td>
@@ -89,6 +94,7 @@
 						</div>
 					</div>
 				</div>
+
 			</div>
 
 		</div>

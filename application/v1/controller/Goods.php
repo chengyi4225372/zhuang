@@ -59,6 +59,7 @@ class Goods extends AdminBase
          if($this->get){
             $id = input('get.id','','int');
             $info = $this->goods->_getinfo($id);
+            $info['infos'] = json_decode($info['infos']);
             $this->assign('info',$info);
             return $this->fetch();
         }
@@ -66,16 +67,19 @@ class Goods extends AdminBase
          if($this->post){
            $data['title']   = input('post.title','','trim');
            $data['status']  = input('post.status','','int');
-           $data['infos']   = input('post.info','','int');
+           $data['infos']   = json_encode(input('post.info','','trim'));
            $data['imgs']    = input('post.imgs','','trim');
            $id               = input('post.id','','int');
+
+//           dump($data);
+//           exit();
 
            $ret = $this->goods->_edit($data,$id);
 
            if($ret){
-               return json(['code'=>200,',msg'=>'编辑成功']);
+               return json(['code'=>200,'msg'=>'编辑成功']);
            }else{
-               return json(['code'=>400,',msg'=>'编辑失败']);
+               return json(['code'=>400,'msg'=>'编辑失败']);
            }
 
         }

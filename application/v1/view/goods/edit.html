@@ -12,6 +12,7 @@
 <div id="content">
 
     <div class="container-fluid">
+
         <div class="row">
             <div class="col-md-12">
                 <div class="widget-area-2 lorvens-box-shadow">
@@ -41,7 +42,7 @@
                                 <label for="status">商品状态</label>
                                 <select class="form-control m-bottom10" id="status">
                                     <option value="1" {eq name="$info.status" value="1"} selected="" {/eq}>上架</option>
-                                    <option value="-1" {eq name="$info.status" value="1"} selected="" {/eq}>下架</option>
+                                    <option value="-1" {eq name="$info.status" value="-1"} selected="" {/eq}>下架</option>
                                 </select>
                             </div>
 
@@ -62,7 +63,6 @@
         </div>
 
     </div>
-    <!-- /Main Content -->
 </div>
 
 {include file='public/js' /}
