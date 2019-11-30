@@ -24,10 +24,16 @@ class  AdminBase extends Controller
 
        $this->assign('path',$this->path);
 
+       $this->check_member();
+
        //dump($this->path);
    }
 
 
-
+   public function check_member(){
+       if(session('admin_user') == false || $this->request->action() =='out'){
+           return $this->redirect('login/index');
+       }
+   }
 
 }

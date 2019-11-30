@@ -45,11 +45,11 @@ $('#login').click(function(){
             });
         }
 
-        if(ret.code == 407){
-            layer.msg(ret.msg,{icon:5},function(){
-                parent.location.reload();
-            });
-        }
+        // if(ret.code == 407){
+        //     layer.msg(ret.msg,{icon:5},function(){
+        //         parent.location.reload();
+        //     });
+        // }
 
 
 

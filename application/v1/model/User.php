@@ -136,8 +136,7 @@ class User extends Model{
      */
      public function _checkUserInfo($user,$pwd){
           $users = $this->where(['users'=>$user])->find();
-
-          if($users !== false){
+          if(empty($users)){
               return 40003; //用户不存在
           }
 
@@ -149,9 +148,9 @@ class User extends Model{
               return 40006; //密码不对
           }
 
-          if($users['tokens'] !== tokens($users['users'],$users['create_time'])){
-              return 40007;//token 不对
-          }
+//          if($users['tokens'] != tokens($users['users'],$users['create_time'])){
+//              return 40007;//token 不对
+//          }
 
          return $users;
 

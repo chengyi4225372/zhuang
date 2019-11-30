@@ -36,7 +36,7 @@ class Goods extends AdminBase
         if($this->post){
            $data['title']   = input('post.title','','trim');
            $data['status']  = input('post.status','','int');
-           $data['infos']    = input('post.info','','trim');
+           $data['infos']    = json_encode(input('post.info','','trim'));
            $data['imgs']    = input('post.imgs','','trim');
             
            $ret = $this->goods->_add($data);
