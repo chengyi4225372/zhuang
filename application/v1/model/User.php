@@ -135,25 +135,24 @@ class User extends Model{
      * @pwd 明文密码
      */
      public function _checkUserInfo($user,$pwd){
-          $users = $this->where(['users'=>$user])->find();
+          $users = $this->where(['users'=>$user])->find()->toArray();
           if(empty($users)){
-              return 40003; //用户不存在
+              return ['code'=>40003]; //用户不存在
           }
 
           if($users['status'] == -1){
-             return 40005; //用户禁止登录
+             return ['code'=>40005]; //用户禁止登录
           }
 
           if($users['pwd'] !== setpwd($pwd,$users['salt'])){
-              return 40006; //密码不对
+              return ['code'=>40006]; //密码不对
           }
 
-//          if($users['tokens'] != tokens($users['users'],$users['create_time'])){
-//              return 40007;//token 不对
-//          }
+          if($users['tokens'] != tokens($users['users'],'shop_admin_user')){
+              return  ['code'=>40007];//token 不对
+          }
 
-         return $users;
-
+          return ['code'=> 20000,'user'=>$users];
      }
 
 }

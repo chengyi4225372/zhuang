@@ -26,7 +26,6 @@ class  AdminBase extends Controller
 
        $this->check_member();
 
-       //dump($this->path);
    }
 
 

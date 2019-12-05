@@ -23,26 +23,29 @@ class Login extends  Controller
             $pwd  = input('post.pwd','','trim');
             
             $user = new User();
-            $result = $user->_checkUserInfo($users,$pwd); //todo 待完成
+            $result = $user->_checkUserInfo($users,$pwd);
 
-            if($result == 40003){
+            if($result['code'] == 40003){
                  return json(['code'=>403,'msg'=>'用户不存在']);
             }
 
-            if($result == 40005){
+            if($result['code']== 40005){
                 return json(['code'=>405,'msg'=>'该用户禁止登录']);
             }
 
-            if($result == 40006){
+            if($result['code'] == 40006){
                 return json(['code'=>406,'msg'=>'用户密码不对']);
             }
 
-//            if($result == 40007){
-//                return json(['code'=>407,'msg'=>'令牌不合法']);
-//            }
+            if($result['code'] == 40007){
+                return json(['code'=>407,'msg'=>'令牌不合法']);
+            }
 
-             session('admin_user',$result);
-             return json(['code'=>400,'msg'=>'请求成功']);
+            if($result['code'] == 20000){
+                session('admin_user',$result['user']);
+                return json(['code'=>402,'msg'=>'登录成功']);
+            }
+
         }
         return false;
     }

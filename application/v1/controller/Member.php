@@ -45,7 +45,7 @@ class Member extends AdminBase
             $data['status']  = input('post.status','','trim');
             $data['salt'] = rand_str();
             $data['create_time'] = time();
-            $data['tokens'] = tokens($data['users'],$data['create_time']);
+            $data['tokens'] = tokens($data['users'],'shop_admin_user');
             $data['ip']     = getIp();
             $data['pwd'] = setpwd($pwd,$data['salt']);
 
@@ -84,7 +84,7 @@ class Member extends AdminBase
            $data['status'] = input('post.status','','int');
            $data['salt']   = rand_str();
            $data['create_time']  = time();
-           $data['tokens'] = tokens($data['users'],$data['create_time']);
+           $data['tokens'] = tokens($data['users'],'shop_admin_user');
            $data['pwd']    = setpwd($pwd,$data['salt']);
 
 

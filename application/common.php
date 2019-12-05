@@ -56,8 +56,8 @@ function tokens($users,$time){
  * @pwd  明文密码
  * @salt 盐
  */
-function setpwd($pwd,$salt){
-    $pwd = md5(md5($pwd).$salt);
+function setpwd($pwd){
+    $pwd = md5(md5($pwd).'shop_admin_user_member');
     return $pwd;
 }
 
@@ -88,9 +88,10 @@ function getIp()
  * 检查id 是否为空
  */
 function checkEmptyId($id){
-    if(empty($id)|| is_null($id)|| !isset($id)|| id<=0){
+    if(empty($id)|| is_null($id)|| isset($id) ==false|| id<=0){
         return false;
     }
+    return true;
 }
 
 

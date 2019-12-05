@@ -8,11 +8,10 @@ class Index extends AdminBase
     //后台首页
     public function index(){
         if($this->get){
-
             $this->assign('title','后台首页');
             return $this->fetch();
         }
-
+      return false;
     }
 
 
