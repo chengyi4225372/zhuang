@@ -7,9 +7,7 @@
     <title>{$title}</title>
     {include file='public/css' /}
 </head>
-
 <body>
-
 <div class="loading">
     <div class="spinner">
         <div class="double-bounce1"></div>
@@ -28,7 +26,7 @@
 
 
         <div class="container-fluid">
-            <!-- Page Title -->
+
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="block-title">{$title}</h3>
@@ -36,51 +34,70 @@
             </div>
 
             <div class="row">
-                <!-- tab -->
+
                 <div class="lorvens-widget">
                     <div class="bd-example bd-example-tabs">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Home</a>
+                                <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">网站图片</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">邮箱和APP连接</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active show" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">Contact</a>
+                                <a class="nav-link active show" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">网站其他设置</a>
                             </li>
                         </ul>
-                        <div class="tab-content" id="myTabContent">
+                        <div class="tab-content " id="myTabContent">
+
                             <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master
-                                    cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-                                    synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
-                                    aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                                <div class="form-group">
+                                    <label for="images">头部图</label>
+                                    <br/>
+                                    <img id="himgs" src="{$one.himgs?$one.gimgs:'__ADMIN__/images/default.png'}"  onclick="$('#file').click();" style="width: 150px;height: 100px;">
+                                    <input type="file" onchange="uploadhimgs()" class="form-control" id="file" style="display:none;" >
+                                    <input type="hidden" id="himages" value="{$one.himgs|default=''}" />
+                                </div>
+
+                                <p style="padding-bottom: 30px;">  </p>
+
+
+                                <div class="form-group">
+                                    <label for="images">底部图</label>
+                                    <br/>
+                                    <img id="fimgs" src="{$one.fimgs?$one.fimgs:'__ADMIN__/images/default.png'}"  onclick="$('#file').click();" style="width: 150px;height: 100px;">
+                                    <input type="file" onchange="uploadfimgs()" class="form-control" id="files" style="display:none;" >
+                                    <input type="hidden" id="fimages" value="{$one.fimgsdefault=''}" />
+                                </div>
+                                   <!--  会有隐藏域 -->
+                                <button type="submit" class="btn btn-primary" style="margin-right: 100px;">提交</button>
                             </div>
+
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore
-                                    velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
-                                    photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo
-                                    nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna
-                                    velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard
-                                    ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente
-                                    accusamus tattooed echo park.</p>
+
+                                <div class="form-group col-md-12">
+                                    <label for="email">邮箱地址</label>
+                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="请输入邮箱地址">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="textarea">APP连接地址</label>
+                                    <textarea class="form-control" id="apps" rows="3"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" style="margin-right: 100px;">提交</button>
                             </div>
+
                             <div class="tab-pane fade active show" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack
-                                    lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore
-                                    carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.
-                                    Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester
-                                    cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray
-                                    yr.</p>
+                                <p> 暂时未开发，有需要在开发！！！</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- tab  -->
+
+                <!-- 基本面板
                 <div class="col-md-12">
                     <div class="widget-area-2 lorvens-box-shadow">
-
 
                         <div class="lorvens-widget">
                             <form>
@@ -131,7 +148,7 @@
 
                     </div>
                 </div>
-
+                 -->
             </div>
         </div>
 
@@ -145,5 +162,10 @@
 </a>
 {include file='public/js' /}
 </body>
+<script>
 
+
+
+
+</script>
 </html>
