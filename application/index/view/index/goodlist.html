@@ -69,72 +69,26 @@
   <div class="container">
         <div class="row justify-content-center">
 
-            <div class="title pb-5 col-12">
-
-            </div>
-            <!--Card-1-->
+            <div class="title pb-5 col-12"></div>
+              {volist name='list' id='go'}
             <div class="card col-12 col-md-6 p-3 col-lg-3">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="__INDEX__/assets/images/74666162-958584501161770-8929162245888278528-o-1-506x506.jpg" alt="Mobirise" title="">
+                        <img src="{$go.imgs}" alt="Mobirise" title="">
                     </div>
                     <div class="card-box">
-                        <h4 class="card-title mbr-fonts-style display-5"><strong>《Anna Sui》<br>童話獨角獸保鮮花禮盒</strong></h4>
-                        <p class="mbr-text mbr-fonts-style display-7">🔷紅柚、橙花、果仁糖、雪松
-<br>🔷木質花果香味<br>🔷加左迪士尼公主系列感覺更生動～
-<br>🔷快啲送比你心中的香香公主啦🥰
-<br>🔷有花仲有禮物收 點會有女唔冧啊？😎
-<br>🔷size:17cm×17cm×9cm
-<br>🔷內設LED燈</p>
+                        <h4 class="card-title mbr-fonts-style display-5"><strong>{$go.title}</strong></h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            {$go.infos}
+                        </p>
                         <!--Btn-->
-                        <div class="mbr-section-btn align-left"><a href="https://mobirise.co" class="btn btn-secondary display-4">
-                                購買<br></a></div>
+                        <div class="mbr-section-btn align-left">
+                            <a href="javascript:;" class="btn btn-secondary display-4">購買<br></a></div>
                     </div>
                 </div>
             </div>
-            <!--Card-2-->
-            <div class="card col-12 col-md-6 p-3 col-lg-3">
-                <div class="card-wrapper">
-                    <div class="card-img">
-                        <img src="__INDEX__/assets/images/75196327-958563554497198-5372836270038843392-o-506x506.jpg" alt="Mobirise" title="">
-                    </div>
-                    <div class="card-box">
-                        <h4 class="card-title mbr-fonts-style display-5">《Jo Malone》<br>Pallar<br>保鮮花禮盒</h4>
-                        <p class="mbr-text mbr-fonts-style display-7">🌸香調：英國梨&amp;小蒼蘭
-<br>🌸秋天氣息 清新優雅令人感到舒服，後續佐以木質香調的柔和 令好感度大大提升～
-<br>🌸快啲送比你心中的香香公主啦🥰
-<br>🌸有花仲有禮物收 點會有女唔冧啊？😎
-<br>🌸size:17cm×17cm×9cm
-<br>🌸內設LED燈
-<br>🌸人工手作 自家製產品</p>
-                        <!--Btn-->
-                        <div class="mbr-section-btn align-left"><a href="https://mobirise.co" class="btn btn-secondary display-4">
-                                購買</a></div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-3-->
-            <div class="card col-12 col-md-6 p-3 col-lg-3">
-                <div class="card-wrapper">
-                    <div class="card-img">
-                        <img src="__INDEX__/assets/images/75339422-952225305131023-5650739457456865280-o-506x506.jpg" alt="Mobirise" title="">
-                    </div>
-                    <div class="card-box">
-                        <h4 class="card-title mbr-fonts-style display-5">《Jo Malone》<br>fallry<br>保鮮花禮盒</h4>
-                        <p class="mbr-text mbr-fonts-style display-7">🦋香調：英國梨&amp;小蒼蘭
-<br>🦋秋天氣息 清新優雅令人感到舒服，後續佐以木質香調的柔和 令好感度大大提升～
-<br>🦋只有一個 快啲送比你心中的香香公主啦🥰
-<br>🦋有花仲有禮物收 點會有女唔冧啊？😎
-<br>🦋size:17cm×17cm×9cm
-<br>🦋內設LED燈
-<br>🦋人工手作 自家製產品</p>
-                        <!--Btn-->
-                        <div class="mbr-section-btn align-left"><a href="https://mobirise.co" class="btn btn-secondary display-4">
-                                購買</a></div>
-                    </div>
-                </div>
-            </div>
-            <!--Card-4-->
+              {/volist}
+            <!--
             <div class="card col-12 col-md-6 p-3 col-lg-3 last-child">
                 <div class="card-wrapper">
                     <div class="card-img">
@@ -150,12 +104,13 @@
 <br>🦋size:17cm×17cm×9cm 
 <br>🦋內設LED燈 
 <br>🦋人工手作 自家製產品</p>
-                        <!--Btn-->
+
                         <div class="mbr-section-btn align-left"><a href="https://mobirise.co" class="btn btn-secondary display-4">
                                 購買</a></div>
                     </div>
                 </div>
             </div>
+            -->
         </div>
     </div>
 </section>

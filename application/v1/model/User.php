@@ -6,6 +6,16 @@ use think\Model;
 
 class User extends Model{
 
+
+    /**
+     * 获取所有的用户数量
+     */
+    public function getcount(){
+        $count = $this->count();
+         return $count?$count:'';
+    }
+
+
     /**
      * 列表
      */

@@ -5,6 +5,15 @@ use think\Model;
 class Goods extends Model{
 
     /**
+     * 商品总数
+     */
+     public  function  getgoodscount(){
+        $count =  $this->count();
+         return $count?$count:'';
+     }
+
+
+    /**
      * 列表
      */
     public function _list(){

@@ -2,6 +2,7 @@
 namespace app\index\controller;
 
 use app\index\controller\HomeBase;
+use app\v1\model\Goods;
 class Index extends HomeBase
 {
     /**
@@ -11,7 +12,6 @@ class Index extends HomeBase
     public function index()
     {
         if($this->request->isGet()){
-
             $this->assign('title','首页');
             return $this->fetch();
         }
@@ -25,6 +25,14 @@ class Index extends HomeBase
     public function goodlist(){
 
         if($this->request->isGet()){
+            $goods  =  new Goods();
+            $list   = $goods->_list();
+
+            foreach ($list as $key =>$val){
+                $list[$key]['infos'] = json_decode($list[$key]['infos']);
+            }
+
+            $this->assign('list',$list);
 
             $this->assign('title','商品列表');
             return $this->fetch();
