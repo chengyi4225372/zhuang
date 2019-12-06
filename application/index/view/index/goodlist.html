@@ -42,12 +42,13 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="index.html">
-                         <img src="__INDEX__/assets/images/74887128-952604271759793-710622933491384320-n-122x122.jpeg" alt="queen's box" title="" style="height: 3.8rem;">
+                    <a href="/">
+                         <img src="{$config.himgs}" alt="queen's box" title="" style="height: 3.8rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="https://mobirise.com">
-                        Queen's-Box</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/">
+                    {$config.title}
+                </a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -56,14 +57,15 @@
                         <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
                         主頁</a>
                 </li></ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-white display-4" href="https://wa.me/85266905990"><span class="mobi-mbri mobi-mbri-paper-plane mbr-iconfont mbr-iconfont-btn" style="color: rgb(74, 128, 56);"></span>
-                    
+            <div class="navbar-buttons mbr-section-btn">
+                <a class="btn btn-sm btn-white display-4" href="{$config.wechatapp}">
+                    <span class="mobi-mbri mobi-mbri-paper-plane mbr-iconfont mbr-iconfont-btn" style="color: rgb(74, 128, 56);"></span>
                     即刻黎WhatsApp我啦</a></div>
         </div>
     </nav>
 </section>
 
-  <section class="engine"><a href="https://mobirise.info/z">best html templates</a></section>
+  <section class="engine"><a href="/"></a></section>
   <section class="services1 cid-rHXSX3IBi8" id="services1-8">
 
   <div class="container">
@@ -125,8 +127,8 @@
         <div class="media-container-row content text-white">
             <div class="col-12 col-md-3">
                 <div class="media-wrap">
-                    <a href="index.html">
-                        <img src="__INDEX__/assets/images/74624090-3181840135224115-7654798131510378496-o-192x192.jpeg" alt="Mobirise" title="">
+                    <a href="/">
+                        <img src="{$config.fimgs}" alt="Mobirise" title="{$config.title}">
                     </a>
                 </div>
             </div>
@@ -141,8 +143,8 @@
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
                 <h5 class="pb-3">聯絡方式</h5>
                 <p class="mbr-text">
-                    <a href="mailto:queensbox111@gmail.com">Email</a><br><br>
-                    <a href="https://wa.me/85266905990">WHATSAPP</a><br>
+                    <a href="{$config.email}">{$config.email}</a><br><br>
+                    <a href="{$config.wechatapp}">WHATSAPP</a><br>
                 </p>
             </div>
         </div>
@@ -155,7 +157,7 @@
             <div class="media-container-row mbr-white">
                 <div class="col-sm-6 copyright">
                     <p class="mbr-text mbr-fonts-style display-7">
-                        © Copyright 2019 Leon</p>
+                        {$config.foot}</p>
                 </div>
                 <div class="col-md-6">
                     

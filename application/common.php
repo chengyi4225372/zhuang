@@ -88,7 +88,7 @@ function getIp()
  * 检查id 是否为空
  */
 function checkEmptyId($id){
-    if(empty($id)|| is_null($id)|| isset($id) ==false|| id<=0){
+    if(empty($id)|| is_null($id)|| isset($id) == false|| $id<=0){
         return false;
     }
     return true;

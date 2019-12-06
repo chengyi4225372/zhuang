@@ -28,16 +28,16 @@ class Config extends Model{
         }
      }
 
-
      /**
       * 编辑
       * @id
       * @data
       */
      public function edit($id,$data){
-         if(checkEmptyId($id) ==  false){
-             return false;
-         }
+
+        if(checkEmptyId($id) == false){
+            return false;
+        }
 
         if(empty($data)){
             return false;

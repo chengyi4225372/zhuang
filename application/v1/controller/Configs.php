@@ -17,8 +17,7 @@ class  Configs extends AdminBase{
     /*网站配置*/
     public function index(){
         if($this->get){
-            $config = new Config();
-            $one = $config->getallone();
+            $one = $this->model->getallone();
             $this->assign('one',$one);
             $this->assign('title','网站设置');
             return $this->fetch();
@@ -83,7 +82,14 @@ class  Configs extends AdminBase{
         if($this->post){
             $data['himgs']  = input('post.himgs','','trim');
             $data['fimgs']  = input('post.fimgs','','trim');
-            $ret = $this->model->subminimgs($data);
+            $id   = input('post.mid','','int');
+
+            if(checkEmptyId($id) == false){
+                $ret = $this->model->add($data);
+            }else {
+                 $ret = $this->model->edit($id,$data);
+            }
+
 
             if($ret !== false){
                 return json(['code'=>200,'msg'=>'操作成功']);
@@ -94,5 +100,30 @@ class  Configs extends AdminBase{
         return false;
     }
 
-    
+    /**
+     * 网站标题配置
+     */
+     public function wangset(){
+         if($this->post){
+             $data['title']  = input('post.title','','trim');
+             $data['email']  = input('post.email','','trim');
+             $data['foot']   = input('post.foot','','trim');
+             $data['facebook']   = input('post.facebook','','trim');
+             $data['wechatapp']  = input('post.wechatapp','','trim');
+             $id   = input('post.mid','','int');
+
+             if(checkEmptyId($id) ==false){
+                 $ret = $this->model->add($data);
+             }else {
+                 $ret = $this->model->edit($id,$data);
+             }
+             if($ret !== false){
+                 return json(['code'=>200,'msg'=>'操作成功']);
+             }else {
+                 return json(['code'=>400,'msg'=>'操作失败']);
+             }
+
+         }
+         return false;
+     }
 }

@@ -42,21 +42,23 @@
                                 <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">网站图片</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">邮箱和APP连接</a>
+                                <a class="nav-link active show" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">邮箱和APP连接</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active show" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="true">网站其他设置</a>
+                                <a class="nav-link " id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">网站其他设置</a>
                             </li>
                         </ul>
                         <div class="tab-content " id="myTabContent">
+
+                            <input type="hidden"  id="mid" value="{$one.id}">
 
                             <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="form-group">
                                     <label for="images">头部图</label>
                                     <br/>
-                                    <img id="himgs" src="{$one.himgs?$one.gimgs:'__ADMIN__/images/default.png'}"  onclick="$('#file').click();" style="width: 150px;height: 100px;">
+                                    <img id="himgs" src="{$one.himgs?$one.himgs:'__ADMIN__/images/default.png'}"  onclick="$('#file').click();" style="width: 150px;height: 100px;">
                                     <input type="file" onchange="uploadhimgs()" class="form-control" id="file" style="display:none;" >
-                                    <input type="hidden" id="himages" value="{$one.himgs|default=''}" />
+                                    <input type="hidden" id="himages" value="{$one.himgs?$one.himgs:''}" />
                                 </div>
 
                                 <p style="padding-bottom: 30px;">  </p>
@@ -67,35 +69,49 @@
                                     <br/>
                                     <img id="fimgs" src="{$one.fimgs?$one.fimgs:'__ADMIN__/images/default.png'}"  onclick="$('#files').click();" style="width: 150px;height: 100px;">
                                     <input type="file" onchange="uploadfimgs()" class="form-control" id="files" style="display:none;" >
-                                    <input type="hidden" id="fimages" value="{$one.fimgsdefault=''}" />
+                                    <input type="hidden" id="fimages" value="{$one.fimgs?$one.himgs:''}" />
                                 </div>
-                                   <!--  会有隐藏域 -->
-                                <input type="hidden"  id="mid" value="{$one.id}">
+
 
                                 <button type="button" data-url="{:url('@v1/configs/submitimgs')}" class="btn btn-primary subimgs" style="margin-right: 100px;">提交</button>
                             </div>
 
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
                                 <div class="form-group col-md-12">
                                     <label for="email">网站名称</label>
-                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="请输入网站名称">
+                                    <input type="text" class="form-control" id="title" value="{$one.title}"
+                                           aria-describedby="title" placeholder="请输入网站名称">
+                                </div>
+
+
+
+                                <div class="form-group col-md-12">
+                                    <label for="facebook"> fackbook连接地址</label>
+                                    <input type="text" class="form-control" id="facebook" value="{$one.facebook}"
+                                           aria-describedby="facebook" placeholder="请输入fackbook地址">
                                 </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="email">邮箱地址</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="请输入邮箱地址">
+                                    <input type="email" class="form-control" id="email" value="{$one.email}"
+                                           aria-describedby="emailHelp" placeholder="请输入邮箱地址">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="textarea">APP连接地址</label>
-                                    <textarea class="form-control" id="apps" rows="3"></textarea>
+                                    <label for="apps">APP连接地址</label>
+                                    <textarea class="form-control" id="apps" rows="3">{$one.wechatapp?$one.wechatapp:''}</textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary" style="margin-right: 100px;">提交</button>
+                                <div class="form-group">
+                                    <label for="foot">网站底部设置</label>
+                                    <textarea class="form-control" id="foot" rows="3">{$one.foot?$one.foot:''}</textarea>
+                                </div>
+
+                                <button type="button" data-url="{:url('@v1/configs/wangset')}" class="btn btn-primary confings" style="margin-right: 100px;">提交</button>
                             </div>
 
-                            <div class="tab-pane fade active show" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="tab-pane fade " id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                 <p> 暂时未开发，有需要在开发！！！</p>
                             </div>
                         </div>
