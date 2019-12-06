@@ -35,7 +35,7 @@ function uploadhimgs() {
  * */
 function uploadfimgs() {
     var formData =new FormData();
-    formData.append("file",$("#files")[0].files[0]);
+    formData.append("files",$("#files")[0].files[0]);
 
     var urls = 'uploadfimgs';
 
@@ -61,5 +61,38 @@ function uploadfimgs() {
     });
     return false;
 }
+
+
+/**
+ * 提交图片设置
+ */
+$('.subimgs').click(function(){
+     var himgs = $('#himages').val();
+     var fimgs = $('#fimages').val();
+     var urls  = $(this).attr('data-url');
+     if(himgs == '' || himgs == undefined){
+         layer.msg('请上传头部图片');
+         return false;
+     }
+
+    if(fimgs == '' || fimgs == undefined){
+        layer.msg('请上传底部图片');
+        return false;
+    }
+
+   $.post(urls,{'himgs':himgs,'fimgs':fimgs},function(ret){
+           if(ret.code == 200){
+               layer.msg(ret.msg,{icon:6},function(){
+                   parent.location.reload();
+               })
+           }
+
+           if(ret.code == 400){
+           layer.msg(ret.msg,{icon:5},function(){
+               parent.location.reload();
+           })
+       }
+   },'json');
+})
 
 

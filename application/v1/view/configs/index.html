@@ -65,15 +65,22 @@
                                 <div class="form-group">
                                     <label for="images">底部图</label>
                                     <br/>
-                                    <img id="fimgs" src="{$one.fimgs?$one.fimgs:'__ADMIN__/images/default.png'}"  onclick="$('#file').click();" style="width: 150px;height: 100px;">
+                                    <img id="fimgs" src="{$one.fimgs?$one.fimgs:'__ADMIN__/images/default.png'}"  onclick="$('#files').click();" style="width: 150px;height: 100px;">
                                     <input type="file" onchange="uploadfimgs()" class="form-control" id="files" style="display:none;" >
                                     <input type="hidden" id="fimages" value="{$one.fimgsdefault=''}" />
                                 </div>
                                    <!--  会有隐藏域 -->
-                                <button type="submit" class="btn btn-primary" style="margin-right: 100px;">提交</button>
+                                <input type="hidden"  id="mid" value="{$one.id}">
+
+                                <button type="button" data-url="{:url('@v1/configs/submitimgs')}" class="btn btn-primary subimgs" style="margin-right: 100px;">提交</button>
                             </div>
 
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                                <div class="form-group col-md-12">
+                                    <label for="email">网站名称</label>
+                                    <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="请输入网站名称">
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="email">邮箱地址</label>
