@@ -45,8 +45,8 @@ class Index extends HomeBase
      * 获取客户信息页面
      */
     public function address(){
-        if($this->get){
-            $id = input('get,id','','');
+        if($this->request->isGet()){
+//            $id = input('get.id','','');
 
             $this->assign('title','购买信息');
             return $this->fetch();
@@ -59,7 +59,7 @@ class Index extends HomeBase
      * 获取请求数据
      */
      public function orderadd(){
-         if($this->post || $this->ajax){
+         if($this->request->isPost() || $this->request->isAjax()){
 
          }
          return false;

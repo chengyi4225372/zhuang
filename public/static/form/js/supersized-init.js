@@ -20,16 +20,11 @@ jQuery(function($){
         // 组件
         slide_links        : 'blank',    // 个别环节为每张幻灯片（选项：假的，'民'，'名'，'空'）
         slides             : [    // 幻灯片影像
-                                 {image : '/form/images/1.jpg'},
-                                 {image : '/form//images/2.jpg'},
-                                 {image : '/form/images/3.jpg'}
+                                 {image : '/static/form/images/1.jpg'},
+                                 {image : '/static/form/images/2.jpg'},
+                                 {image : '/static/form/images/3.jpg'}
                        ]
 
     });
 
 });
-/*
-本代码由js代码收集并编辑整理;
-尊重他人劳动成果;
-转载请保留js代码链接 - www.jsdaima.com
-*/
