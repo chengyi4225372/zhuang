@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {include file="public/css" /}
+</head>
+<body>
+
+<div id="content">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget-area-2 lorvens-box-shadow">
+
+                    <div class="lorvens-widget">
+                        <form>
+
+                            <div class="form-group">
+                                <label for="title">订单编号:</label>
+                                {$info.orderno}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="names">姓名:</label>
+                                <input type="text" class="form-control" id="user" value="{$info.user}" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">电话:</label>
+                                <input type="text" class="form-control" id="phone" value="{$info.phone}" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">地址:</label>
+                                <textarea class="form-control" id="address" rows="6">{$info.address}</textarea>
+                            </div>
+
+
+                            <button type="button" class="btn btn-primary cancle" >关闭窗口</button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{include file='public/js' /}
+</body>
+</html>

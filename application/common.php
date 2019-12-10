@@ -94,4 +94,10 @@ function checkEmptyId($id){
     return true;
 }
 
+/**
+ * 生成不重复的订单编号
+ */
+function makeorderid(){
+    return date('Ymd').substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
+}
 

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2019-12-05 18:00:51
+Date: 2019-12-06 14:31:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,16 +21,20 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `shop_config`;
 CREATE TABLE `shop_config` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL,
   `himgs` varchar(255) DEFAULT NULL,
   `fimgs` varchar(255) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `wechatapp` varchar(255) DEFAULT NULL,
+  `foot` varchar(200) DEFAULT NULL,
+  `facebook` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of shop_config
 -- ----------------------------
+INSERT INTO `shop_config` VALUES ('1', 'Queen\'s-Box', '/uploads/imgs/himgs/lijiaqi2.png', '/uploads/imgs/fimgs/74624090-3181840135224115-7654798131510378496-o-192x192.jpeg', '4646545@qq.com', 'www.baidu.com', '© Copyright 2019 Leon', 'www.baidu.com');
 
 -- ----------------------------
 -- Table structure for shop_goods

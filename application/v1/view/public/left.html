@@ -74,7 +74,13 @@
 
         <li class=" {if $path == url('/v1/goods/index')}active{/if}" >
             <a href="{:url('@v1/goods/index')}" >
-                <span class="ti-layout-tab"></span> 商品列表
+                <span class="ti-bar-chart-alt"></span> 商品列表
+            </a>
+        </li>
+
+        <li class=" {if $path == url('/v1/orders/index')}active{/if}" >
+            <a href="{:url('@v1/orders/index')}" >
+                <span class="ti-face-smile"></span> 订单列表
             </a>
         </li>
 
