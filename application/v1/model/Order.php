@@ -6,6 +6,14 @@ use think\Model;
 
 class Order extends Model
 {
+    /**
+     * 获取订单总数 不包括删除订单
+     */
+      public function order_count(){
+          $count = $this->where(['status'=>1])->count();
+          return $count?$count:0;
+      }
+
      /**
       * 获取列表
       */

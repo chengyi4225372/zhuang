@@ -146,6 +146,7 @@ return [
     'view_replace_str'       => [
         '__ADMIN__'=>'/static/admin',
         '__INDEX__'=>'/static/index',
+        '__FM__'=>'/static/form',
     ],
 
     // 默认跳转页面对应的模板文件

@@ -41,5 +41,28 @@ class Index extends HomeBase
     }
 
 
+    /**
+     * 获取客户信息页面
+     */
+    public function address(){
+        if($this->get){
+            $id = input('get,id','','');
+
+            $this->assign('title','购买信息');
+            return $this->fetch();
+        }
+        return false;
+    }
+
+
+    /**
+     * 获取请求数据
+     */
+     public function orderadd(){
+         if($this->post || $this->ajax){
+
+         }
+         return false;
+     }
 
 }
