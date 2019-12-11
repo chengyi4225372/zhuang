@@ -60,9 +60,7 @@ class Order extends Model
           if(checkEmptyId($id) == false){
               return false;
           }
-         // $goods = new Goods();
           $info = $this->where(['status'=>1,'id'=>$id])->find();
-         // $info = array_column($goods,'title','id');
           return $info?$info:'';
       }
 
