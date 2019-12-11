@@ -22,7 +22,9 @@ class Orders extends AdminBase {
      */
     public function index(){
         if($this->get){
-            $list =  $this->order->getorderlist();
+            $title = input('get.title','','');
+            $title = $title?$title:'';
+            $list =  $this->order->getorderlist($title);
             $this->assign('list',$list);
             $this->assign('title','订单列表页');
             return $this->fetch();

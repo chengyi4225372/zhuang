@@ -1,9 +1,14 @@
-
 /*** 搜索功能 ***/
+function searchword(obj){
+   var keyword = $.trim($('#keyword').val());
+   var urls = $(obj).attr('data-url');
 
-
-
-
+   if(keyword == '' || keyword == undefined){
+       layer.msg('请输入搜索的关键字');
+       return false;
+   }
+   window.location.href = urls+'?title='+keyword;
+}
 
 /**
 * 查看详情

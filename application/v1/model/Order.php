@@ -16,10 +16,19 @@ class Order extends Model
 
      /**
       * 获取列表
+      * @title
       */
-     public function  getorderlist(){
-         $list = $this->where(['status'=>1])->order('create_time desc')->paginate(15);
-         $list = $list ?$list:'';
+     public function  getorderlist($title){
+
+         if(!empty($title) || isset($title)){
+             $where = [
+                 'status'=>1,
+                 'orderno|user|phone'=>['like','%'.$title.'%'],
+             ];
+         }
+
+         $list  = $this->where($where)->order('create_time desc')->paginate(15);
+         $list  = $list ?$list:'';
          return $list;
      }
 
