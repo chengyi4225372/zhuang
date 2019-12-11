@@ -96,5 +96,4 @@ class Orders extends AdminBase {
         return false;
     }
 
-
 }
