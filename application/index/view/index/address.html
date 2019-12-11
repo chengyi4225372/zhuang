@@ -18,7 +18,7 @@
         <p></p>
     </div>
 
-    <form method="post" id="loginForm">
+    <form method="post">
         <div>
             <input type="text" name="user" class="username" placeholder="用户名" autocomplete="off"/>
         </div>
@@ -28,12 +28,10 @@
         <div>
             <input type="text" name="address" class="password" placeholder="详细地址" value="" />
         </div>
-         <button type="button" data-url="{:url('index/orderadd')}" onclick="addOrder(this)" >提 交</button>
-    </form>
+         <input type="hidden" name="gid" value="{$Think.get.id}" />
 
-<!--    <a href="register.html">-->
-<!--        <button type="button" class="register-tis">还有没有账号？</button>-->
-<!--    </a>-->
+         <button type="button" data-url="{:url('index/orderadd')}" data-href="{:url('index/goodlist')}" onclick="addOrder(this)" >提 交</button>
+    </form>
 
 </div>
 

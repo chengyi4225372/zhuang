@@ -22,7 +22,7 @@
 
                             <div class="form-group">
                                 <label for="title">订单编号:</label>
-                                {$info.orderno}
+                                <span style="color:#1E9FFF">{$info.orderno}</span>
                             </div>
 
                             <div class="form-group">
@@ -40,8 +40,11 @@
                                 <textarea class="form-control" id="address" rows="6">{$info.address}</textarea>
                             </div>
 
+                            <input type="hidden" id="mid" value="{$info.id}" />
 
-                            <button type="button" class="btn btn-primary cancle" >关闭窗口</button>
+                            <button type="button"  data-url="{:url('@v1/orders/edit')}" class="btn btn-outline-success ordersave" style="margin-left: 200px;">提交</button>
+
+                            <button type="button"  class="btn btn-primary cancle" >关闭窗口</button>
 
                         </form>
 

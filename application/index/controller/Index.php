@@ -18,7 +18,6 @@ class Index extends HomeBase
         return false;
     }
 
-
     /**
      * goods 列表页
      */
@@ -40,13 +39,13 @@ class Index extends HomeBase
         return false;
     }
 
-
     /**
      * 获取客户信息页面
      */
     public function address(){
         if($this->request->isGet()){
-//            $id = input('get.id','','');
+            $id   = input('get.id','','');
+            $info = $this->order->getorderinfo($id);
 
             $this->assign('title','购买信息');
             return $this->fetch();
@@ -60,7 +59,22 @@ class Index extends HomeBase
      */
      public function orderadd(){
          if($this->request->isPost() || $this->request->isAjax()){
+              $data['gid']  = input('post.gid','','int');
+              $data['user'] = input('post.user','','trim');
+              $data['phone']= input('post.phone','','trim');
+              $data['address'] = input('post.address','','trim');
+              $data['orderno'] = makeorderid();
+              $data['create_time'] = time();
 
+              //发送邮件 todo 未完成
+
+              //记录后台
+              $ret = $this->order->order_add($data);
+              if($ret !== false){
+                  return json(['code'=>200,'msg'=>'提交成功']);
+              }else{
+                  return json(['code'=>400,'msg'=>'网络故障，请稍后再试。']);
+              }
          }
          return false;
      }

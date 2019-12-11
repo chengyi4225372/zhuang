@@ -1,3 +1,10 @@
+
+/*** 搜索功能 ***/
+
+
+
+
+
 /**
 * 查看详情
 **/
@@ -51,6 +58,45 @@ $('.order_dels').click(function(){
 
 });
 
+/**
+ * 编辑订单
+ */
+$('.ordersave').click(function(){
+    var id  = $('#mid').val();
+    var phone = $('#phone').val();
+    var address = $('#address').val();
+    var user = $('#user').val();
+
+    if(phone == '' || phone == undefined){
+        layer.msg('电话号码不能为空');
+        return false;
+    }
+
+    if(user == '' || user == undefined){
+        layer.msg('请输入用户姓名');
+        return false;
+    }
+
+    if(address == '' || address == undefined){
+        layer.msg('请填写用户住址');
+        return false;
+    }
+
+    var urls = $(this).attr('data-url');
+    $.post(urls,{'phone':phone,'user':user,'address':address,'id':id},function(ret){
+          if(ret.code == 200){
+              layer.msg(ret.msg,{icon:6},function(){
+                  parent.location.reload();
+              });
+          }
+
+         if(ret.code == 400){
+            layer.msg(ret.msg,{icon:6},function(){
+                parent.location.reload();
+            });
+        }
+    },'json')
+});
 
 /** 取消 关闭 **/
 $('.cancle').click(function(){

@@ -6,6 +6,8 @@ function addOrder(obj){
     var user    = $.trim($("input[name='user']").val());
     var phone   = $.trim($("input[name='phone']").val());
     var address = $.trim($("input[name='address']").val());
+    var gid     = $.trim($("input[name='gid']").val());
+    var relurl  = $(obj).attr('data-href');
 
     if(hrefs == '' || hrefs == undefined){
         return false;
@@ -26,16 +28,16 @@ function addOrder(obj){
         return false;
     }
 
-    $.post(hrefs,{'user':user,'phone':phone,'address':address},function(ret){
+    $.post(hrefs,{'user':user,'phone':phone,'address':address,'gid':gid},function(ret){
             if(ret.code == 200){
                 layer.msg(ret.msg,{icon:6},function(){
-                    parent.location.href = '';
+                    parent.location.href = relurl ;
                 });
             }
 
         if(ret.code == 400){
             layer.msg(ret.msg,{icon:5},function(){
-                parent.location.href = '';
+                parent.location.reload();
             });
         }
     },'json')

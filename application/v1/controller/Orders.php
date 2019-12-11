@@ -68,8 +68,24 @@ class Orders extends AdminBase {
           }
 
           if($this->post){
+              $id   = input('post.id','','int');
+              $data['user'] = input('post.user','','trim');
+              $data['phone'] = input('post.phone','','trim');
+              $data['address'] = input('post.address','','trim');
 
+              if(checkEmptyId($id) == false){
+                  return false;
+              }
+
+              $ret = $this->order->order_edit($id,$data);
+
+              if($ret !== false){
+                  return json(['code'=>200,'msg'=>'编辑成功']);
+              }else {
+                  return json(['code'=>400,'msg'=>'编辑失败']);
+              }
           }
+
           return false;
       }
 
