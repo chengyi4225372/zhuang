@@ -44,7 +44,7 @@ class Order extends Model
 
          $ret = $this->save($data);
 
-         if($ret !==false){
+         if($ret !== false){
              return true;
          }else {
              return false;

@@ -30,7 +30,7 @@ function addOrder(obj){
 
     $.post(hrefs,{'user':user,'phone':phone,'address':address,'gid':gid},function(ret){
             if(ret.code == 200){
-                layer.msg(ret.msg,{icon:6},function(){
+                layer.msg(ret.msg,function(){
                     parent.location.href = relurl ;
                 });
             }
