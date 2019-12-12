@@ -111,8 +111,14 @@
                                 <button type="button" data-url="{:url('@v1/configs/wangset')}" class="btn btn-primary confings" style="margin-right: 100px;">提交</button>
                             </div>
 
-                            <div class="tab-pane fade " id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                <p> 暂时未开发，有需要在开发！！！</p>
+                            <div class="tab-pane fade col-md-12" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="form-group">
+                                    <label for="content">网站首页文字设置</label>
+                                    <textarea class="form-control" id="contents" rows="9" clos="30">{$one.content?$one.content:''}</textarea>
+                                </div>
+
+                                <button type="button" data-url="{:url('@v1/configs/contentconfig')}" class="btn btn-primary configs" style="margin-right: 100px;">提交</button>
+
                             </div>
                         </div>
                     </div>

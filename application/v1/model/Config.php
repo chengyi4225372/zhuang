@@ -11,6 +11,7 @@ class Config extends Model{
      */
      public function getallone(){
          $one = $this->find();
+         $one['content'] = json_decode($one['content']);
          return $one?$one:'';
      }
 
@@ -50,6 +51,7 @@ class Config extends Model{
         }else {
             return false;
         }
+
      }
 
 

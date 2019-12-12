@@ -140,3 +140,28 @@ $('.confings').click(function(){
         }
     },'json');
 });
+
+/**
+ * 网站其他设置
+ */
+$('.configs').click(function(){
+    var content = $('#contents').val();
+    console.log(content);
+
+    var mid  = $('#mid').val();
+
+    var urls = $(this).attr('data-url');
+    $.post(urls,{'content':content,'mid':mid},function(ret){
+         if(ret.code == 200){
+             layer.msg(ret.msg,{icon:6},function(){
+                 parent.location.reload();
+             });
+         }
+
+        if(ret.code == 400){
+            layer.msg(ret.msg,{icon:5},function(){
+                parent.location.reload();
+            })
+        }
+    },'json')
+})

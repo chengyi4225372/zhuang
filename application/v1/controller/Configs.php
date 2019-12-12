@@ -126,4 +126,24 @@ class  Configs extends AdminBase{
          }
          return false;
      }
+
+     /**
+      * 网站其他配置
+      */
+     public function contentconfig(){
+         if($this->post || $this->ajax){
+             $data['content'] = json_encode(input('post.content','','trim'));
+             $id      = input('post.mid','','int');
+
+             $ret =  $this->model->edit($id,$data);
+
+             if($ret !== false){
+                 return json(['code'=>200,'msg'=>'操作成功']);
+             }else {
+                 return json(['code'=>400,'msg'=>'操作失败']);
+             }
+         }
+
+         return false;
+     }
 }
