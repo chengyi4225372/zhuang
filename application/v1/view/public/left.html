@@ -60,6 +60,7 @@
             </ul>
         </li>
         -->
+        {if $Think.session.admin_role eq 1}
         <li class=" {if $path == url('/v1/index/index')}active{/if}" >
             <a href="{:url('@v1/index/index')}" >
                 <span class="ti-home"></span>  首页
@@ -69,6 +70,12 @@
         <li  class=" {if $path == url('/v1/member/index')}active{/if}">
             <a href="{:url('@v1/member/index')}"  >
                 <span class="ti-layout-tab"></span> 用户列表
+            </a>
+        </li>
+
+        <li class=" {if $path == url('/v1/cates/index')}active{/if}">
+            <a href="{:url('@v1/cates/index')}" >
+                <span class="ti-layout-menu-v"></span> 商品分类
             </a>
         </li>
 
@@ -84,11 +91,6 @@
             </a>
         </li>
 
-        <li class=" {if $path == url('/v1/cates/index')}active{/if}">
-            <a href="{:url('@v1/cates/index')}" >
-                <span class="ti-layout-menu-v"></span> 商品分类
-            </a>
-        </li>
 
 
         <li class=" {if $path == url('/v1/configs/index')}active{/if}">
@@ -96,7 +98,15 @@
                 <span class="ti-layout-menu-v"></span> 网站设置
             </a>
         </li>
+     {else /}
 
+        <li class=" {if $path == url('/v1/goods/index')}active{/if}" >
+            <a href="{:url('@v1/goods/index')}" >
+                <span class="ti-bar-chart-alt"></span> 商品列表
+            </a>
+        </li>
+
+     {/if}
 
        <!--
         <li>

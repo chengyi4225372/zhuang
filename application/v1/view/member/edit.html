@@ -20,20 +20,29 @@
                         <form>
 
                             <div class="form-group">
-                                <label for="user">用户名</label>
-                                <input type="text" value="{$info.users}" class="form-control" id="user" placeholder="请输入用户名">
+                                <label for="user">Username</label>
+                                <input type="text" value="{$info.users}" class="form-control" id="user" placeholder="user">
                             </div>
 
                             <div class="form-group">
-                                <label for="pwd">密码</label>
-                                <input type="password" class="form-control" id="pwd" placeholder="请输入密码">
+                                <label for="pwd">password</label>
+                                <input type="password" class="form-control" id="pwd" placeholder="password">
                             </div>
 
                             <div class="form-group">
-                                <label for="status">用户状态</label>
+                                <label for="status">status</label>
                                 <select class="form-control m-bottom10" id="status">
                                     <option value="1"  {eq name="$info.status" value="1"} aria-selected="" {/eq}>正常</option>
                                     <option value="-1" {eq name="$info.status" value="-1"} aria-selected="" {/eq}>禁止</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="status">role</label>
+                                <select class="form-control m-bottom10" id="role">
+                                    <option value="1" {eq name="$info.role" value="1"} aria-selected="" {/eq}>administrators</option>
+                                    <option value="2" {eq name="$info.role" value="2"} aria-selected="" {/eq}>Merchants</option>
                                 </select>
                             </div>
 
@@ -45,9 +54,9 @@
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                             -->
-                            <button type="button" class="btn btn-outline-success edit_save" style="margin-left: 200px;">提交</button>
+                            <button type="button" class="btn btn-outline-success edit_save" style="margin-left: 200px;">sumit</button>
 
-                            <button type="button" class="btn btn-primary cancle" >取消</button>
+                            <button type="button" class="btn btn-primary cancle" >cancle</button>
                         </form>
                     </div>
 
@@ -71,24 +80,25 @@
     $('.edit_save').click(function(){
         var  user = $.trim($('#user').val());
         var  pwd  = $.trim($('#pwd').val());
+        var  role = $('#role option:selected').val();
         var  mid  = $('#mid').val();
 
         var status = $("#status option:selected").val();
 
 
         if(user == '' || user == undefined){
-            layer.msg('用户名不能为空');
+            layer.msg('user is empty');
             return false;
         }
 
         if(pwd == '' || pwd == undefined){
-            layer.msg('密码不能为空');
+            layer.msg('password is empty');
             return false;
         }
 
         var purl = "{:url('member/edit')}";
 
-        $.post(purl,{'user':user,'pwd':pwd,'status':status,'mid':mid},function(ret){
+        $.post(purl,{'user':user,'pwd':pwd,'status':status,'mid':mid,'role':role},function(ret){
 
             if(ret.code == 200){
                 layer.msg(ret.msg,{icon:6},function(){

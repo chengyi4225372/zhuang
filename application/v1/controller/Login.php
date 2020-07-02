@@ -25,6 +25,7 @@ class Login extends  Controller
             $user = new User();
             $result = $user->_checkUserInfo($users,$pwd);
 
+
             if($result['code'] == 40003){
                  return json(['code'=>403,'msg'=>'用户不存在']);
             }
@@ -43,6 +44,7 @@ class Login extends  Controller
 
             if($result['code'] == 20000){
                 session('admin_user',$result['user']);
+                session('admin_role',$result['user']['role']);
                 return json(['code'=>402,'msg'=>'登录成功']);
             }
 

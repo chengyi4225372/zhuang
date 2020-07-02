@@ -37,7 +37,7 @@
 
 
 				<div class="col-md-12">
-					<button type="button"  data-url="{:url('member/add')}"  class="btn btn btn-outline-primary add">添加用户</button>
+					<button type="button"  data-url="{:url('member/add')}"  class="btn btn btn-outline-primary add">Add member</button>
 				</div>
 
 
@@ -52,11 +52,12 @@
 											<thead>
 												<tr>
 													<th scope="col">ID</th>
-													<th scope="col">用户名</th>
-													<th scope="col">用户状态</th>
+													<th scope="col">username</th>
+													<th scope="col">role</th>
+													<th scope="col">user status</th>
 													<th scope="col">ip</th>
-													<th scope="col">创建时间</th>
-													<th scope="col">操作</th>
+													<th scope="col">create_time</th>
+													<th scope="col">action</th>
 												</tr>
 											</thead>
 											{volist name='list' id='vo'}
@@ -65,18 +66,25 @@
 													<th scope="row">{$vo.id}</th>
 													<td>{$vo.users}</td>
 													<td>
+														{if $vo.role == 1}
+														administrators
+														{else /}
+														Merchants
+														{/if}
+													</td>
+													<td>
 												     {if condition="$vo.status eq -1" /}
-														<button type="button" onclick="changeStatus('{$vo.id}','{$vo.status}')" class="btn btn-outline-warning">禁止</button>
+														<button type="button" onclick="changeStatus('{$vo.id}','{$vo.status}')" class="btn btn-outline-warning">off</button>
 													{else /}
-														<button type="button" onclick="changeStatus('{$vo.id}','{$vo.status}')" class="btn btn-outline-info">正常</button>
+														<button type="button" onclick="changeStatus('{$vo.id}','{$vo.status}')" class="btn btn-outline-info">On</button>
                                                      {/if}
 													</td>
 													<td>{$vo.ip}</td>
 													<td>{$vo.create_time}</td>
 													<td>
-                                                        <button type="button" data-href="{:url('@v1/member/edit')}?mid={$vo.id}" class="btn btn-outline-success edits">编辑</button>
+                                                        <button type="button" data-href="{:url('@v1/member/edit')}?mid={$vo.id}" class="btn btn-outline-success edits">edit</button>
                                                          &nbsp;&nbsp;
-                                                        <button type="button" data-href="{:url('@v1/member/del')}?mid={$vo.id}" class="btn btn-outline-danger dels">删除</button>
+                                                        <button type="button" data-href="{:url('@v1/member/del')}?mid={$vo.id}" class="btn btn-outline-danger dels">delete</button>
                                                     </td>
 												</tr>
 											</tbody>
@@ -112,7 +120,7 @@
 
 		layer.open({
 			type: 2,
-			title: '添加',
+			title: 'Add',
 			shadeClose: true,
 			shade: 0.8,
 			area: ['50%', '70%'],
@@ -127,7 +135,7 @@
 
 		layer.open({
 			type: 2,
-			title: '编辑',
+			title: 'edit info',
 			shadeClose: true,
 			shade: 0.8,
 			area: ['50%', '70%'],
@@ -138,8 +146,8 @@
 	$('.dels').click(function(){
 		var hrefs = $(this).attr('data-href');
 
-		layer.confirm('您确定要删除？', {
-			btn: ['确定','点错了'] //按钮
+		layer.confirm('Are you sure you want to delete？', {
+			btn: ['yes','sorry'] //按钮
 		}, function(){
 
 			$.get(hrefs,function(ret){

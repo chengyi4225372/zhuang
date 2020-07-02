@@ -7,7 +7,7 @@
         <ul class="nav justify-content-end">
             <li class="nav-item">
                 <a class="nav-link" href="/" target="_blank">
-                    <span class="ti-heart">前台</span>
+                    <span class="ti-heart">index</span>
                 </a>
             </li>
 
@@ -16,11 +16,11 @@
                     <span class="ti-user"></span>
                 </a>
                 <div class="dropdown-menu lorvens-box-shadow profile animated flipInY">
-                    <h5>用户名: &nbsp;&nbsp; <span style="color:#93D1FF">{$Think.session.admin_user.users}</span></h5>
+                    <h5>username: &nbsp;&nbsp; <span style="color:#93D1FF">{$Think.session.admin_user.users}</span></h5>
                     <a class="dropdown-item" href="{:url('@v1/configs/index')}">
-                        <span class="ti-settings"></span> 网站设置</a>
+                        <span class="ti-settings"></span> config</a>
                     <a class="dropdown-item" href="{:url('@v1/login/out')}">
-                        <span class="ti-power-off"></span>退出</a>
+                        <span class="ti-power-off"></span>out</a>
                 </div>
             </li>
         </ul>

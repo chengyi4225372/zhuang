@@ -21,7 +21,7 @@ class Member extends AdminBase
     public function index(){
         if($this->get){
             $list = $this->user->_list();
-            $this->assign('title','用户列表');
+            $this->assign('title','member List');
             $this->assign('list',$list);
             return $this->fetch();
         }
@@ -43,6 +43,7 @@ class Member extends AdminBase
             $pwd = input('post.pwd','','trim');
             $data['users'] = input('post.user','','trim');
             $data['status']  = input('post.status','','trim');
+            $data['role']  = input('post.role','','trim');
             $data['salt'] = rand_str();
             $data['create_time'] = time();
             $data['tokens'] = tokens($data['users'],'shop_admin_user');
@@ -52,9 +53,9 @@ class Member extends AdminBase
             $rets = $this->user->_add($data);
 
             if($rets !== false){
-                return json(['code'=>200,'msg'=>'操作成功']);
+                return json(['code'=>200,'msg'=>'success']);
             }else {
-                return json(['code'=>400,'msg'=>'操作失败']);
+                return json(['code'=>400,'msg'=>'error']);
             }
 
         }
@@ -82,6 +83,7 @@ class Member extends AdminBase
            $pwd= input('post.pwd','','trim');
            $data['users']  = input('post.user','','trim');
            $data['status'] = input('post.status','','int');
+           $data['role']  = input('post.role','','trim');
            $data['salt']   = rand_str();
            $data['create_time']  = time();
            $data['tokens'] = tokens($data['users'],'shop_admin_user');
@@ -93,15 +95,15 @@ class Member extends AdminBase
            }
 
            if(empty($data)){
-               return json(['code'=>403,'msg'=>'传输数据不能为空']);
+               return json(['code'=>403,'msg'=>'data is empty']);
            }
 
            $res = $this->user->saveByidinfo($id,$data);
 
            if($res !== false){
-               return json(['code'=>200,'msg'=>'操作成功']);
+               return json(['code'=>200,'msg'=>'success']);
            }else {
-               return json(['code'=>400,'msg'=>'操作失败']);
+               return json(['code'=>400,'msg'=>'error']);
            }
 
         }
@@ -124,9 +126,9 @@ class Member extends AdminBase
           $ret = $this->user->_dels($id);
 
           if($ret !== false){
-              return json(['code'=>200,'msg'=>'删除成功']);
+              return json(['code'=>200,'msg'=>'success']);
           }else{
-              return json(['code'=>400,'msg'=>'删除失败']);
+              return json(['code'=>400,'msg'=>'error']);
           }
       }
 
@@ -148,15 +150,15 @@ class Member extends AdminBase
         $ret = $this->user->_savestatus($id,$status);
 
         if($ret == 40003){
-            return json(['code'=>403,'msg'=>'参数不合法']);
+            return json(['code'=>403,'msg'=>'mid error']);
         }
 
          if($ret == 40004){
-             return json(['code'=>404,'msg'=>'操作失败']);
+             return json(['code'=>404,'msg'=>'action error']);
          }
 
          if($ret == 40000){
-             return json(['code'=>200,'msg'=>'操作成功']);
+             return json(['code'=>200,'msg'=>'success']);
          }
      }
 
