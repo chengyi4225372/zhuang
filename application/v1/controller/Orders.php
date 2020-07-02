@@ -83,6 +83,9 @@ class Orders extends AdminBase {
               $data['user'] = input('post.user','','trim');
               $data['phone'] = input('post.phone','','trim');
               $data['address'] = input('post.address','','trim');
+              $data['price'] = input('post.price');
+              $data['pay_type'] = input('post.pay');
+              $data['qu_time'] = input('post.qutime');
 
               if(checkEmptyId($id) == false){
                   return false;

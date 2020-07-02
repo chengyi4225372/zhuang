@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use app\index\controller\HomeBase;
 use app\v1\model\Goods;
+use think\Db;
 class Index extends HomeBase
 {
 
@@ -73,17 +74,36 @@ class Index extends HomeBase
               $data['phone']= input('post.phone','','trim');
               $data['address'] = input('post.address','','trim');
               $data['orderno'] = makeorderid();
+              $data['qu_time'] = input('post.qutime');
+              $data['pay_type'] = input('post.pay');
               $data['create_time'] = time();
-
-              //发送邮件 todo 未完成
-
+              $data['price']  = Db::name('goods')->where(['id'=>$data['gid']])->value('price');
               //记录后台
-              $ret = $this->order->order_add($data);
+              $ret = Db::name('order')->insertGetId($data);
+
               if($ret !== false){
-                  return json(['code'=>200,'msg'=>'提交成功']);
+                  return json(['code'=>200,'msg'=>'提交成功','mid'=>$ret]);
               }else{
                   return json(['code'=>400,'msg'=>'网络故障，请稍后再试。']);
               }
+         }
+         return false;
+     }
+
+
+
+     /**
+      * 订单显示
+      */
+     public function ordershow(){
+
+         if($this->request->isGet()){
+
+             $id = input('get.mid','','trim');
+             $info =  Db::name('order')->where(['id'=>$id,'status'=>1])->find();
+             $info['gid'] = Db::name('goods')->where(['id'=>$info['gid'],'status'=>1])->value('title');
+             $this->assign('info',$info);
+             return $this->fetch();
          }
          return false;
      }

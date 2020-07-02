@@ -10,6 +10,20 @@ function searchword(obj){
    window.location.href = urls+'?title='+keyword;
 }
 
+
+/** 时间插件**/
+
+layui.use('laydate', function(){
+    var laydate = layui.laydate;
+
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#qutime' //指定元素
+    });
+});
+
+
+
 /**
 * 查看详情
 **/
@@ -71,24 +85,29 @@ $('.ordersave').click(function(){
     var phone = $('#phone').val();
     var address = $('#address').val();
     var user = $('#user').val();
+    var price = $('#price').val();
+    var qutime = $('#qutime').val();
+    var pay    = $('#pay option:selected').val();
+
 
     if(phone == '' || phone == undefined){
-        layer.msg('电话号码不能为空');
+        layer.msg('set phone ');
         return false;
     }
 
     if(user == '' || user == undefined){
-        layer.msg('请输入用户姓名');
+        layer.msg('set user name');
         return false;
     }
 
     if(address == '' || address == undefined){
-        layer.msg('请填写用户住址');
+        layer.msg('set address ');
         return false;
     }
 
     var urls = $(this).attr('data-url');
-    $.post(urls,{'phone':phone,'user':user,'address':address,'id':id},function(ret){
+
+    $.post(urls,{'phone':phone,'user':user,'address':address,'id':id,'price':price,'qutime':qutime,'pay':pay},function(ret){
           if(ret.code == 200){
               layer.msg(ret.msg,{icon:6},function(){
                   parent.location.reload();
@@ -106,4 +125,5 @@ $('.ordersave').click(function(){
 /** 取消 关闭 **/
 $('.cancle').click(function(){
     parent.layer.closeAll();
-})
+});
+

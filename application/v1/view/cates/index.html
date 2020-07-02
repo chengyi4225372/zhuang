@@ -35,13 +35,11 @@
                 </div>
             </div>
 
-            <div style="padding:10px;"></div>
 
             <div class="col-md-12">
-                     <input type="text" class="form-control" id="keyword" value="{$Think.get.title}" placeholder="请输入订单编号，手机号，用户名" />
-                     <button type="button" data-url="{:url('@v1/orders/index')}" class="btn btn-outline-primary" onclick="searchword(this)">搜索</button>
-                     <button type="button" data-url="{:url('@v1/orders/index')}" class="btn btn-outline-secondary" onclick="window.location.href = $(this).attr('data-url');">取消搜索</button>
+                <button type="button" class="btn btn btn-outline-primary addGoods" data-url="{:url('cates/add')}">Add</button>
             </div>
+
 
 
             <div class="row">
@@ -55,37 +53,19 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">订单编号（ordernumber）</th>
-                                        <th scope="col">商品名称（goodsname）</th>
-                                        <th scope="col">姓名（name）</th>
-                                        <th scope="col">电话（phone）</th>
-                                        <th scope="col">地址（address）</th>
-                                        <th scope="col">支付方式（pay-type）</th>
-                                        <th scope="col">创建时间（create-time）</th>
-                                        <th scope="col">操作（action）</th>
+                                        <th scope="col">cates</th>
+                                        <th scope="col">操作(action)</th>
                                     </tr>
                                     </thead>
                                     {volist name='list' id='vo'}
                                     <tbody>
                                     <tr>
                                         <th scope="row">{$vo.id}</th>
-                                        <td>{$vo.orderno}</td>
-                                        <td>{$goods[$vo.gid]}</td>
-                                        <td>{$vo.user}</td>
-                                        <td>{$vo.phone}</td>
-                                        <td>{$vo.address}</td>
+                                        <th scope="row">{$vo.pname}</th>
                                         <td>
-                                            {eq name='$vo.pay_type' value='1'}
-                                             alipay
-                                            {else /}
-                                             wechat
-                                            {/eq}
-                                        </td>
-                                        <td>{$vo.create_time}</td>
-                                        <td>
-                                            <button type="button" data-url="{:url('@v1/orders/edit')}?id={$vo.id}" class="btn btn-outline-success orders_edit">set-infos</button>
+                                            <button type="button" data-url="{:url('@v1/cates/edit')}?mid={$vo.id}" onclick="edit(this)" class="btn btn-outline-success">cates infos</button>
                                             &nbsp;&nbsp;
-                                            <button type="button" data-url="{:url('@v1/orders/dels')}?id={$vo.id}" class="btn btn-outline-danger order_dels">delete</button>
+                                            <button type="button" data-url="{:url('@v1/cates/dels')}?mid={$vo.id}" onclick="del(this)" class="btn btn-outline-danger">delete</button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -93,7 +73,7 @@
                                 </table>
                                 <!-- 分页       -->
                                 <div class="lorvens-widget">
-                                    {$list->render();}
+                                   {$list->render();}
                                 </div>
                             </div>
 
@@ -113,6 +93,55 @@
     <span class="ti-angle-up"></span>
 </a>
 {include file='public/js' /}
+
+<script>
+    function del(obj){
+            var hrefs = $(obj).attr('data-url');
+
+            if(hrefs == '' ||　hrefs == undefined){
+                return false;
+            }
+
+            layer.confirm('您确定要删除？', {
+                btn: ['确定','点错了'] //按钮
+            }, function(){
+
+                $.get(hrefs,function(ret){
+
+                    if(ret.code == 200){
+                        layer.msg(ret.msg,{icon:6},function(){
+                            parent.location.reload();
+                        })
+                    }
+
+                    if(ret.code == 400){
+                        layer.msg(ret.msg,{icon:5},function(){
+                            parent.location.reload();
+                        })
+                    }
+                })
+
+            }, function(){
+                parent.layer.closeAll();
+            });
+    }
+
+    function edit(obj){
+        var urls = $(obj).attr('data-url');
+        if(urls == '' ||　urls == undefined){
+            return false;
+        }
+        layer.open({
+            type: 2,
+            title: 'see infos',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['50%', '80%'],
+            content: urls, //iframe的url
+        })
+    }
+
+</script>
 </body>
 
 </html>

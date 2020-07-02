@@ -84,11 +84,19 @@
             </a>
         </li>
 
+        <li class=" {if $path == url('/v1/cates/index')}active{/if}">
+            <a href="{:url('@v1/cates/index')}" >
+                <span class="ti-layout-menu-v"></span> 商品分类
+            </a>
+        </li>
+
+
         <li class=" {if $path == url('/v1/configs/index')}active{/if}">
             <a href="{:url('@v1/configs/index')}" >
                 <span class="ti-layout-menu-v"></span> 网站设置
             </a>
         </li>
+
 
        <!--
         <li>

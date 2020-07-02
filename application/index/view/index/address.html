@@ -20,17 +20,29 @@
 
     <form method="post">
         <div>
-            <input type="text" name="user" class="username" placeholder="用户名" autocomplete="off"/>
+            <input type="text" name="user" class="username" placeholder="username" autocomplete="off"/>
         </div>
         <div>
-            <input type="text" name="phone"  placeholder="电话"class="password" value="" />
+            <input type="text" name="phone"  placeholder="phone"class="password" value="" />
         </div>
         <div>
-            <input type="text" name="address" class="password" placeholder="详细地址" value="" />
+            <input type="text" name="address" class="password" placeholder="address" value="" />
         </div>
+
+        <div>
+            <input type="text" name="qutime" id="qutime" class="" placeholder="set time" value="" />
+        </div>
+
+        <div>
+            <select id="pay" style="width: 270px; height: 42px;line-height: 42px;margin-top: 25px;">
+                <option value=" 1 ">Alipay</option>
+                <option value=" 2 ">Wechat</option>
+            </select>
+        </div>
+
          <input type="hidden" name="gid" value="{$Think.get.id}" />
 
-         <button type="button" data-url="{:url('index/orderadd')}" data-href="{:url('index/goodlist')}" onclick="addOrder(this)" >提 交</button>
+         <button type="button" data-url="{:url('index/orderadd')}"  onclick="addOrder(this)" > Submit </button>
     </form>
 
 </div>

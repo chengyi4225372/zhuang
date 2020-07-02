@@ -21,22 +21,41 @@
                         <form>
 
                             <div class="form-group">
-                                <label for="title">订单编号:</label>
+                                <label for="title">order no:</label>
                                 <span style="color:#1E9FFF">{$info.orderno}</span>
                             </div>
 
                             <div class="form-group">
-                                <label for="names">姓名:</label>
+                                <label for="names">user name :</label>
                                 <input type="text" class="form-control" id="user" value="{$info.user}" />
                             </div>
 
                             <div class="form-group">
-                                <label for="phone">电话:</label>
+                                <label for="phone">phone :</label>
                                 <input type="text" class="form-control" id="phone" value="{$info.phone}" />
                             </div>
 
                             <div class="form-group">
-                                <label for="address">地址:</label>
+                                <label for="phone">price :</label>
+                                <input type="text" class="form-control" id="price" value="{$info.price}" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">pay type :</label>
+                                <select id="pay">
+                                    <option value="1" {if $info.pay_type ==1 } selected {/if} >alipay</option>
+                                    <option value="2"  {if $info.pay_type ==2} selected {/if} >wechat</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Pick up time :</label>
+                                <input type="text" class="form-control" id="qutime" value="{$info.qu_time}" />
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="address">address:</label>
                                 <textarea class="form-control" id="address" rows="6">{$info.address}</textarea>
                             </div>
 
